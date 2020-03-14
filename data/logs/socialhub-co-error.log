@@ -1,0 +1,83 @@
+2020/02/17 01:32:42 [error] 6#6: *1 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 172.17.0.1, server: socialhub.co, request: "GET / HTTP/1.1", upstream: "fastcgi://172.17.0.2:9000", host: "socialhub.co"
+2020/02/17 02:00:54 [error] 6#6: *5 open() "/usr/share/nginx/html/socialhub.co/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: socialhub.co, request: "GET /favicon.ico HTTP/1.1", host: "socialhub.co"
+2020/02/17 02:00:55 [error] 6#6: *7 open() "/usr/share/nginx/html/socialhub.co/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: socialhub.co, request: "GET /favicon.ico HTTP/1.1", host: "socialhub.co"
+2020/02/17 02:08:14 [error] 6#6: *10 open() "/usr/share/nginx/html/socialhub.co/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: socialhub.co, request: "GET /favicon.ico HTTP/1.1", host: "socialhub.co"
+2020/02/18 00:25:28 [error] 6#6: *20 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(51): Illuminate\View\Compilers\BladeCompiler->com...
+PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerE
+2020/02/18 00:31:15 [error] 6#6: *1 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(51): Illuminate\View\Compilers\BladeCompiler->com...
+PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEn
+2020/02/18 00:31:18 [error] 6#6: *1 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(51): Illuminate\View\Compilers\BladeCompiler->com...
+PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEn
+2020/02/18 00:31:23 [error] 6#6: *1 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(51): Illuminate\View\Compilers\BladeCompiler->com...
+PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEn
+2020/02/18 00:36:43 [error] 6#6: *7 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(51): Illuminate\View\Compilers\BladeCompiler->com...
+PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEn
+2020/02/18 00:40:33 [error] 6#6: *5 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(51): Illuminate\View\Compilers\BladeCompiler->com...
+PHP message: PHP Fatal error:  Uncaught ErrorException: file_put_contents(/usr/share/nginx/html/socialhub.co/storage/framework/views/fd3caefc21cf30cf1ae7886b170667e968fa578c.php): failed to open stream: Permission denied in /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/usr/share/ngin...', 133, Array)
+#1 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('/usr/share/ngin...', '<?php $__env->s...', 0)
+#2 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php(129): Illuminate\Filesystem\Filesystem->put('/usr/share/ngin...', '<?php $__env->s...')
+#3 /usr/share/nginx/html/socialhub.co/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEn
+2020/02/22 02:29:51 [error] 6#6: *3 open() "/usr/share/nginx/html/socialhub.co/public/_ignition/health-check" failed (2: No such file or directory), client: 172.19.0.1, server: socialhub.co, request: "GET /_ignition/health-check HTTP/1.1", host: "socialhub.co", referrer: "http://socialhub.co/"
+2020/02/22 02:55:14 [error] 6#6: *7 open() "/usr/share/nginx/html/socialhub.co/public/login" failed (2: No such file or directory), client: 172.19.0.1, server: socialhub.co, request: "GET /login HTTP/1.1", host: "socialhub.co", referrer: "http://socialhub.co/"
+2020/02/22 02:57:03 [error] 6#6: *9 open() "/usr/share/nginx/html/socialhub.co/public/login" failed (2: No such file or directory), client: 172.19.0.1, server: socialhub.co, request: "GET /login HTTP/1.1", host: "socialhub.co", referrer: "http://socialhub.co/"
+2020/02/22 02:57:06 [error] 6#6: *9 open() "/usr/share/nginx/html/socialhub.co/public/login" failed (2: No such file or directory), client: 172.19.0.1, server: socialhub.co, request: "GET /login HTTP/1.1", host: "socialhub.co", referrer: "http://socialhub.co/"
+2020/02/22 02:57:07 [error] 6#6: *9 open() "/usr/share/nginx/html/socialhub.co/public/login" failed (2: No such file or directory), client: 172.19.0.1, server: socialhub.co, request: "GET /login HTTP/1.1", host: "socialhub.co", referrer: "http://socialhub.co/"
+2020/02/22 02:57:08 [error] 6#6: *9 open() "/usr/share/nginx/html/socialhub.co/public/login" failed (2: No such file or directory), client: 172.19.0.1, server: socialhub.co, request: "GET /login HTTP/1.1", host: "socialhub.co", referrer: "http://socialhub.co/"
+2020/02/22 02:57:12 [error] 6#6: *9 open() "/usr/share/nginx/html/socialhub.co/public/register" failed (2: No such file or directory), client: 172.19.0.1, server: socialhub.co, request: "GET /register HTTP/1.1", host: "socialhub.co", referrer: "http://socialhub.co/"

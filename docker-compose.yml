@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  web:
+    image: nginx:latest
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+      - ./www:/usr/share/nginx/html
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./data/logs:/var/log/nginx
+      - ./config/cert:/usr/local/nginx/ssl
+    links:
+      - php
+    networks:
+        - container_net
+  php:
+    #image: php:7.2-fpm
+    build: './config/php-fpm/7.2'
+    tty: true
+    volumes:
+      - ./www:/usr/share/nginx/html
+    networks:
+      - container_net
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7.20
+    volumes:
+      - "db_data:/var/lib/mysql"
+    # - "./mysql/initial_data:/docker-entrypoint-initdb.d"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123.456
+    volumes:
+      - ./dados/databases:/var/www
+    networks:
+      - container_net
+
+networks:
+  container_net:
+    external: false
