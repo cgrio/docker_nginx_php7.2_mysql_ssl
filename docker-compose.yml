@@ -14,7 +14,7 @@ services:
       - php
     networks:
         - container_net
-  php:
+  php7-2:
     #image: php:7.2-fpm
     build: './config/php-fpm/7.2'
     tty: true
@@ -26,18 +26,14 @@ services:
       - mysql
   mysql:
     image: mysql:5.7.20
-    volumes:
-      - "db_data:/var/lib/mysql"
-    # - "./mysql/initial_data:/docker-entrypoint-initdb.d"
     ports:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=123.456
     volumes:
-      - ./dados/databases:/var/www
+      - ./data/database_mysql:/var/www
     networks:
       - container_net
-
 networks:
   container_net:
     external: false

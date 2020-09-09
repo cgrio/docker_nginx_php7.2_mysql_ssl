@@ -4,3 +4,4 @@ data/database_mysql/*
 config/nginx/wp77.co.conf
 config/nginx/commmerce77.co.conf
 config/nginx/socialhub.co.conf
+.vscode
