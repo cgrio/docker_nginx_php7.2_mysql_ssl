@@ -6,3 +6,9 @@
 2020/02/17 02:23:45 [emerg] 1#1: cannot load certificate "/usr/local/nginx/ssl/cert.crt": BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/usr/local/nginx/ssl/cert.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
 2020/02/17 02:24:35 [emerg] 1#1: cannot load certificate "/usr/local/nginx/ssl/cert.crt": BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/usr/local/nginx/ssl/cert.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
 2020/02/17 02:27:26 [emerg] 1#1: cannot load certificate "/usr/local/nginx/ssl/cert.crt": BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/usr/local/nginx/ssl/cert.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+2020/09/09 12:32:31 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12
+2020/09/10 13:00:24 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12
+2020/09/10 13:03:38 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12
+2020/09/10 13:07:08 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12
+2020/09/10 14:14:18 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12
+2020/09/10 14:16:19 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12

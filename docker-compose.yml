@@ -11,9 +11,19 @@ services:
       - ./data/logs:/var/log/nginx
       - ./config/cert:/usr/local/nginx/ssl
     links:
-      - php
+      - php7-2
     networks:
         - container_net
+  php7-4:
+    #image: php:7.2-fpm
+    build: './config/php-fpm/7.4'
+    tty: true
+    volumes:
+      - ./www:/usr/share/nginx/html
+    networks:
+      - container_net
+    depends_on:
+      - mysql
   php7-2:
     #image: php:7.2-fpm
     build: './config/php-fpm/7.2'
