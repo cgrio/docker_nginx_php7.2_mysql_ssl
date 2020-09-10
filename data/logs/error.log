@@ -12,3 +12,9 @@
 2020/09/10 13:07:08 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12
 2020/09/10 14:14:18 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12
 2020/09/10 14:16:19 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:12
+2020/09/10 15:20:55 [emerg] 1#1: unknown directive "listem" in /etc/nginx/conf.d/example.co.conf:4
+2020/09/10 15:28:50 [emerg] 1#1: unknown directive "listem" in /etc/nginx/conf.d/example.co.conf:4
+2020/09/10 15:34:37 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/example.co.conf:17
+2020/09/10 15:35:22 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/socialhub.co.conf:18
+2020/09/10 15:36:46 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/wp77.co.conf:12
+2020/09/10 15:37:44 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/wp77.co.conf:17
