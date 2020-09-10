@@ -59,7 +59,7 @@ RUN apk add --no-cache \
     && docker-php-ext-install mbstring \
     && docker-php-ext-enable mbstring \
     && rm -rf /tmp/*
-
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 # INstall opcache, xdebug, redis, mongodb
 RUN docker-php-source extract \
     && pecl install opcache xdebug redis mongodb apcu \
