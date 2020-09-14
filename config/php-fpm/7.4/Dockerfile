@@ -71,4 +71,9 @@ RUN docker-php-source extract \
     && docker-php-ext-enable opcache xdebug redis mongodb apcu \
     && docker-php-source delete \
     && rm -rf /tmp/*
-    
+  
+  RUN apk add --no-cache \
+        libzip-dev \
+        zip \
+  && docker-php-ext-configure zip \
+  && docker-php-ext-install zip
