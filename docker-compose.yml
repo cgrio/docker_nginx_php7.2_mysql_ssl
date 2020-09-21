@@ -41,7 +41,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123.456
     volumes:
-      - ./data/database_mysql:/var/www
+      - ./data/database_mysql:/var/lib/mysql
     networks:
       - container_net
 networks:

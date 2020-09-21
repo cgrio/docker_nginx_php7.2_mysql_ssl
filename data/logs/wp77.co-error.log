@@ -1,1 +1,0 @@
-2020/02/23 00:37:47 [error] 6#6: *354 open() "/usr/share/nginx/html/wp77.co/favicon.ico" failed (2: No such file or directory), client: 172.19.0.1, server: wp77.co, request: "GET /favicon.ico HTTP/1.1", host: "wp77.co"

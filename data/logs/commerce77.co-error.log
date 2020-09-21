@@ -1,3 +1,0 @@
-2020/02/18 00:40:24 [error] 6#6: *3 open() "/usr/share/nginx/html/commerce77.co/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: commerce77.co, request: "GET /favicon.ico HTTP/1.1", host: "commerce77.co"
-2020/02/18 00:44:58 [error] 6#6: *8 open() "/usr/share/nginx/html/commerce77.co/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: commerce77.co, request: "GET /favicon.ico HTTP/1.1", host: "commerce77.co"
-2020/02/18 00:59:31 [error] 6#6: *8 open() "/usr/share/nginx/html/commerce77.co/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: commerce77.co, request: "GET /favicon.ico HTTP/1.1", host: "commerce77.co"
