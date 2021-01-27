@@ -1,7 +1,0 @@
-www/*
-init-letsencrypt.sh
-data/*
-dados/*
-config/nginx/*.co.conf
-.vscode
-node_modules
