@@ -44,6 +44,42 @@ services:
       - ./data/database_mysql:/var/lib/mysql
     networks:
       - container_net
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123.456
+    volumes:
+      - ./data/database_postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - container_net
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: username
+      ME_CONFIG_BASICAUTH_PASSWORD: 123.456
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 123.456
+    links:
+      - mongo
+    networks:
+      - container_net
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123.456
+    ports:
+      - "27017:27017"
+    volumes:
+      -  ./data/dabase_mongo:/data/db
+    networks:
+      - container_net
 networks:
   container_net:
-    external: false
+    external: true
