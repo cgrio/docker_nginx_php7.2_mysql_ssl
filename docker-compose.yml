@@ -39,9 +39,12 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=123.456
+      MYSQL_ROOT_PASSWORD: '123.456'
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '123.456'
     volumes:
-      - ./data/database_mysql:/var/lib/mysql
+      - db_data_mysql:/var/lib/mysql
     networks:
       - container_net
   postgres:
@@ -80,6 +83,8 @@ services:
       -  ./data/dabase_mongo:/data/db
     networks:
       - container_net
+volumes:
+  db_data_mysql:
 networks:
   container_net:
     external: true
