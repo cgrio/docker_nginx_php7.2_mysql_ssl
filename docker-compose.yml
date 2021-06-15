@@ -53,7 +53,7 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123.456
     volumes:
-      - ./data/database_postgres:/var/lib/postgresql/data
+      - db_data_postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
     networks:
@@ -80,11 +80,13 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      -  ./data/dabase_mongo:/data/db
+      -  db_data_mongo:/data/db
     networks:
       - container_net
 volumes:
   db_data_mysql:
+  db_data_postgres:
+  db_data_mongo:
 networks:
   container_net:
     external: true
