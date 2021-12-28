@@ -13,7 +13,6 @@ Mysql
 **1 - Efetue o download com o git clone https://github.com/cgrio/docker_nginx_php7.2_mysql_ssl/**
 
 **2 - Acesse a pasta e crie a interface de rede externa com o comando:**
-
 ***docker network create container_net***  
 
 **3 - Depois inicie os containers com o comando:**  
@@ -27,7 +26,7 @@ adicione o projeto à um diretório na pasta www
 **6 - Renomeie o arquivo para o nome do seu projeto:**  
 rename exemplo.co(1).conf lojavirtual.co.conf  
 
-**7 - Altere o arquivo para as novas configurações (veja comentários iniciados por "//" e os remova este trecho localizado no final de cada linha do arquivo):**
+**7 - Altere o arquivo para as novas configurações (veja comentários iniciados por "//" e os remova no final de cada linha):**
 
     server {
         index index.php index.html;
