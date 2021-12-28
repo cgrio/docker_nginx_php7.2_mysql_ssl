@@ -2,13 +2,13 @@
 Docker com tudo pronto para trabalhar com vários projetos em qualquer máquina Windows, Linux ou Mac
 Este docker tem:
 
-NGINX com SSL
-PHP 7.4
-PHP 7.2
-MongoDB
-Mongo Express para adminstrar
-PostgresSql
-Mysql
+NGINX com SSL  
+PHP 7.4  
+PHP 7.2  
+MongoDB  
+Mongo Express para adminstrar  
+PostgresSql  
+Mysql  
 
 **1 - Efetue o download com o git clone https://github.com/cgrio/docker_nginx_php7.2_mysql_ssl/**
 
