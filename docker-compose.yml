@@ -3,8 +3,8 @@ services:
   web:
     image: nginx:latest
     ports:
-    - "80:80"
-    - "443:443"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./www:/usr/share/nginx/html
       - ./config/nginx:/etc/nginx/conf.d
@@ -13,20 +13,10 @@ services:
     links:
       - php7-2
     networks:
-        - container_net
+      - container_net
   php7-4:
     #image: php:7.2-fpm
     build: './config/php-fpm/7.4'
-    tty: true
-    volumes:
-      - ./www:/usr/share/nginx/html
-    networks:
-      - container_net
-    depends_on:
-      - mysql
-  php7-2:
-    #image: php:7.2-fpm
-    build: './config/php-fpm/7.2'
     tty: true
     volumes:
       - ./www:/usr/share/nginx/html
@@ -59,7 +49,7 @@ services:
     networks:
       - container_net
   mongo-express:
-    image: mongo-express
+    image: mongo-express:0.54
     ports:
       - 8081:8081
     environment:
@@ -68,10 +58,14 @@ services:
       ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: 123.456
+      ME_CONFIG_MONGODB_SERVER: 'mongo'
     links:
       - mongo
     networks:
       - container_net
+    depends_on:
+      - mongo
+    restart: unless-stopped
   mongo:
     image: mongo
     environment:
@@ -80,9 +74,23 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      -  db_data_mongo:/data/db
+      - db_data_mongo:/data/db
     networks:
       - container_net
+  # sandex-app:
+  #   depends_on:
+  #     - mongo
+  #   build: ./config/nodejs
+  #   ports:
+  #     - 4000:4000
+  #   environment:
+  #     - DB_HOST=mongo
+  #     - DB_USER=root
+  #     - DB_PASSWORD=123.456
+  #     - DB_NAME=sandex-app
+  #     - DB_PORT=27017
+  #   stdin_open: true
+  #   tty: true
 volumes:
   db_data_mysql:
   db_data_postgres:

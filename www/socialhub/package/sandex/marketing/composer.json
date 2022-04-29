@@ -1,0 +1,19 @@
+{
+    "name": "sandex/marketing",
+    "description": "Modulo de marketing feito em Laravel como Package",
+    "type": "project",
+    "license": "private",
+    "autoload": {
+        "psr-4": {
+            "Sandex\\Marketing\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alessandro Correia",
+            "email": "alessrio@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
