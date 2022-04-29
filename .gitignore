@@ -1,4 +1,6 @@
-www/*
 data/*
 .vscode/*
 nodes_modules/*
+**/nodes_modules/*
+vendor/*
+**/vendor/*

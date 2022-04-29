@@ -20,8 +20,14 @@ services:
     tty: true
     volumes:
       - ./www:/usr/share/nginx/html
+      - ./config/php-fpm/7.4/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./config/php-fpm/7.4/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
     networks:
       - container_net
+    environment:
+      PHP_IDE_CONFIG: "serverName=freud"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - mysql
   mysql:
