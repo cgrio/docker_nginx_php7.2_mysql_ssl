@@ -13,12 +13,12 @@ class SandexMarketingServiceProvider extends ServiceProvider
     {
         //
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
-      //  $this->loadMigrationsFrom(__DIR__.'/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/Data/Migrations');
       //  $this->loadViewsFrom(__DIR__.'/views', 'cgrio');
 
-        // $this->publishes([
-        //     __DIR__.'/views/cgrio' => base_path('resources/views/cgrio'),
-        // ]);
+         $this->publishes([
+             __DIR__ . '/Presentation/Html/views' => base_path('resources/views/sandex/marketing'),
+         ]);
 
         // $this->publishes([
         //     __DIR__.'/views/assets' => base_path('resources'),
