@@ -39,18 +39,19 @@ class DiplomaController extends Controller
                         ->with('error', 'Falha ao fazer upload')
                         ->withInput();
             }
-            return view("diploma.exibir");
+            return  redirect()->route("diploma.exibir");
         }
     }
 
     public function exibirDiplomasEnviados(Request $request)
     {
         $arquivos_diploma = [];
-        $diretorio_certificados = storage_path('app') . '/app/public/diplomas';
-        if (\file_exists($diretorio_certificados)) {
+        $diretorio_certificados = storage_path('app') . '/public/diplomas';
+       // dd($diretorio_certificados);
+        if (\is_dir($diretorio_certificados)) {
             $arquivos_diploma = array_diff(scandir($diretorio_certificados), array('.', '..'));
-            print_r($arquivos_diploma);
         }
+
 
         return view("diploma.exibir", ["arquivos_diploma" => $arquivos_diploma]);
     }
