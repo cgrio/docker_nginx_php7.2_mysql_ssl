@@ -11,12 +11,13 @@ services:
       - ./data/logs:/var/log/nginx
       - ./config/cert:/usr/local/nginx/ssl
     links:
-      - php7-2
+      - php7-4
     networks:
       - container_net
   php7-4:
-    #image: php:7.2-fpm
     build: './config/php-fpm/7.4'
+    ports:
+      - 9000:9000
     tty: true
     volumes:
       - ./www:/usr/share/nginx/html
@@ -25,7 +26,7 @@ services:
     networks:
       - container_net
     environment:
-      PHP_IDE_CONFIG: "serverName=freud"
+      PHP_IDE_CONFIG: "serverName=socialhub.co"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
