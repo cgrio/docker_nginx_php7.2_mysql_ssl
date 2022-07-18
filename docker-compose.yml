@@ -1,0 +1,135 @@
+version: "3.7"
+services:
+  knowage:
+    image: knowagelabs/knowage-server-docker:latest
+    expose:
+      - "9000"
+    environment:
+      DB_USER: 'root'
+      DB_PASS: '123.456'
+      DB_DB: 'knowagedb'
+      DB_HOST: 'mysql'
+      DB_PORT: 3306
+      HMAC_KEY: 'abd123'
+      PASSWORD_ENCRYPTION_SECRET: 'segredo77'
+      CACHE_DB_USER: 'root'
+      CACHE_DB_PASS: '123.456'
+      CACHE_DB_DB: 'knowagedb_cache'
+      CACHE_DB_HOST: 'mysql'
+      CACHE_DB_PORT: 3306
+    volumes:
+      - ./data/knowagelabs:/home/knowage/apache-tomcat/resources
+    networks:
+      - container_net
+    depends_on:
+      - mysql
+    links:
+      - mysql
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./www:/usr/share/nginx/html
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./data/logs:/var/log/nginx
+      - ./config/cert:/usr/local/nginx/ssl
+    links:
+      - php7-4
+    networks:
+      - container_net
+  php8-1:
+    build: './config/php-fpm/8.1'
+    expose:
+      - "9000"
+    tty: true
+    volumes:
+      - ./www:/usr/share/nginx/html
+      - ./config/php-fpm/8.1/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./config/php-fpm/8.1/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    networks:
+      - container_net
+    environment:
+      PHP_IDE_CONFIG: "serverName=freud"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - mysql
+  php7-4:
+    build: './config/php-fpm/7.4'
+    ports:
+      - 9000:9001
+    tty: true
+    volumes:
+      - ./www:/usr/share/nginx/html
+      - ./config/php-fpm/7.4/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./config/php-fpm/7.4/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    networks:
+      - container_net
+    environment:
+      PHP_IDE_CONFIG: "serverName=socialhub.co"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7.20
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: '123.456'
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '123.456'
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    networks:
+      - container_net
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123.456
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - container_net
+  mongo-express:
+    image: mongo-express:0.54
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: username
+      ME_CONFIG_BASICAUTH_PASSWORD: 123.456
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 123.456
+      ME_CONFIG_MONGODB_SERVER: 'mongo'
+    links:
+      - mongo
+    networks:
+      - container_net
+    depends_on:
+      - mongo
+  #    restart: unless-stopped
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123.456
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongo:/data/db
+    networks:
+      - container_net
+volumes:
+  db_data_mysql:
+  db_data_postgres:
+  db_data_mongo:
+networks:
+  container_net:
+    external: true

@@ -1,0 +1,11 @@
+data/*
+.vscode/*
+nodes_modules/*
+**/nodes_modules/*
+vendor/*
+**/vendor/*
+www/*
+nodejs/*
+nodejs
+.vscode
+sandex_app
