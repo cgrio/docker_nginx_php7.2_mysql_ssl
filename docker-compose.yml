@@ -2,8 +2,8 @@ version: "3.7"
 services:
   knowage:
     image: knowagelabs/knowage-server-docker:latest
-    expose:
-      - "9000"
+    ports:
+      - "8080:8080"
     environment:
       DB_USER: 'root'
       DB_PASS: '123.456'
@@ -126,6 +126,12 @@ services:
       - ./data/mongo:/data/db
     networks:
       - container_net
+  redis:
+    container_name: ieducar-redis
+    image: redis:alpine
+    #    restart: always
+    ports:
+      - 6379
 volumes:
   db_data_mysql:
   db_data_postgres:
