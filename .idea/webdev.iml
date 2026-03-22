@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/maximebf/debugbar/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/mike42/escpos-php/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/mobiledetect/mobiledetectlib/namespaced" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/phpoffice/phpspreadsheet/src" isTestSource="false" packagePrefix="PhpOffice" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/restler/framework" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/sabre/psr/log" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/sabre/sabre/dav/lib" isTestSource="false" packagePrefix="Sabre" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/stripe/stripe-php/lib" isTestSource="false" packagePrefix="Stripe" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/swiftmailer/egulias/email-validator" isTestSource="false" packagePrefix="Egulias" />
+      <sourceFolder url="file://$MODULE_DIR$/www/dolibarr/htdocs/includes/swiftmailer/lexer/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/www/laravel_20230807" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/www/wordpress/wp-includes" isTestSource="false" packagePrefix="PHPMailer" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

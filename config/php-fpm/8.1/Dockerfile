@@ -1,36 +1,83 @@
-FROM php:8.1.0-fpm
+#
+#--------------------------------------------------------------------------
+# Image Setup
+#--------------------------------------------------------------------------
+#
 
+FROM php:8.1-fpm
 
-RUN apt-get update \
-    && apt-get install -y apt-utils libicu-dev libpq-dev libxslt-dev libmagickwand-dev libzip-dev \
-    && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg  \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install intl pdo pdo_pgsql bcmath xsl soap pdo_mysql gd zip \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pdo_pgsql pgsql \
-    && docker-php-ext-configure opcache --enable-opcache \
+# Set Environment Variables
+ENV DEBIAN_FRONTEND=noninteractive
+
+#
+#--------------------------------------------------------------------------
+# Software's Installation
+#--------------------------------------------------------------------------
+#
+# Installing tools and PHP extentions using "apt", "docker-php", "pecl",
+#
+
+# Install "curl", "libmemcached-dev", "libpq-dev", "libjpeg-dev",
+#         "libpng-dev", "libfreetype6-dev", "libssl-dev", "libmcrypt-dev",
+RUN set -eux; \
+    apt-get update; \
+    apt-get upgrade -y; \
+    apt-get install -y --no-install-recommends \
+            curl \
+            libmemcached-dev \
+            libz-dev \
+            libpq-dev \
+            libjpeg-dev \
+            libjpeg62-turbo-dev \
+            libpng-dev \
+            libfreetype6-dev \
+            libssl-dev \
+            libwebp-dev \
+            libxpm-dev \
+            libmcrypt-dev \
+            libonig-dev; \
+    rm -rf /var/lib/apt/lists/*
+
+RUN set -eux; \
+    # Install the PHP pdo_mysql extention
+    docker-php-ext-install pdo_mysql; \
+    # Install the PHP pdo_pgsql extention
+    docker-php-ext-install pdo_pgsql; \
+    # Install the PHP gd library
+    docker-php-ext-configure gd \
+            --prefix=/usr \
+            --with-jpeg \
+            --with-webp \
+            --with-xpm \
+            --with-freetype; \
+    docker-php-ext-install gd; \
+    php -r 'var_dump(gd_info());'
+
+RUN apt-get update -y  \
+    && apt-get install -y libicu-dev libxslt-dev libmagickwand-dev libzip-dev \
+    && docker-php-ext-install intl calendar bcmath xsl soap zip
+
+RUN apt-get install && docker-php-ext-configure opcache --enable-opcache \
     && docker-php-ext-install opcache
 
 RUN pecl install imagick \
     && docker-php-ext-enable imagick
 
+RUN apt update && apt install -y libc-client-dev libkrb5-dev && rm -r /var/lib/apt/
+
+RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+&& docker-php-ext-install imap 
+
+
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
-RUN apt-get update -y && apt-get install -y libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev \
-    libfreetype6-dev
+
 RUN apt-get update && \
     apt-get install -y \
     zlib1g-dev 
 
 
-RUN apt-get install -y libzip-dev
-RUN docker-php-ext-install zip
-RUN docker-php-ext-install mysqli pdo pdo_mysql pdo_pgsql
-
-
-RUN docker-php-ext-configure gd 
 
 
 RUN sed -ie 's/pm.max_children = 5/pm.max_children = 15/' /usr/local/etc/php-fpm.d/www.conf \

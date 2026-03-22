@@ -1,30 +1,5 @@
-version: "3.7"
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json
 services:
-  knowage:
-    image: knowagelabs/knowage-server-docker:latest
-    ports:
-      - "8080:8080"
-    environment:
-      DB_USER: 'root'
-      DB_PASS: '123.456'
-      DB_DB: 'knowagedb'
-      DB_HOST: 'mysql'
-      DB_PORT: 3306
-      HMAC_KEY: 'abd123'
-      PASSWORD_ENCRYPTION_SECRET: 'segredo77'
-      CACHE_DB_USER: 'root'
-      CACHE_DB_PASS: '123.456'
-      CACHE_DB_DB: 'knowagedb_cache'
-      CACHE_DB_HOST: 'mysql'
-      CACHE_DB_PORT: 3306
-    volumes:
-      - ./data/knowagelabs:/home/knowage/apache-tomcat/resources
-    networks:
-      - container_net
-    depends_on:
-      - mysql
-    links:
-      - mysql
   web:
     image: nginx:latest
     ports:
@@ -52,6 +27,23 @@ services:
       - container_net
     environment:
       PHP_IDE_CONFIG: "serverName=freud"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - mysql
+  php8-4:
+    build: './config/php-fpm/8.4'
+    expose:
+      - "9000"
+    tty: true
+    volumes:
+      - ./www:/usr/share/nginx/html
+      - ./config/php-fpm/8.4/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./config/php-fpm/8.4/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    networks:
+      - container_net
+    environment:
+      PHP_IDE_CONFIG: "serverName=php8.4"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -116,7 +108,7 @@ services:
       - mongo
   #    restart: unless-stopped
   mongo:
-    image: mongo
+    image: mongo:latest
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123.456
@@ -132,10 +124,40 @@ services:
     #    restart: always
     ports:
       - 6379
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.5.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
 volumes:
   db_data_mysql:
   db_data_postgres:
   db_data_mongo:
+  db_data_elasticsearch:
 networks:
   container_net:
     external: true

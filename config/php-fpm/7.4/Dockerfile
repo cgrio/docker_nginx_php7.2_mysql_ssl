@@ -4,7 +4,7 @@ RUN apt-get update \
     && apt-get install -y apt-utils libicu-dev libpq-dev libxslt-dev libmagickwand-dev libzip-dev \
     && docker-php-ext-configure gd  \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install intl pdo pdo_pgsql bcmath xsl soap pdo_mysql gd zip \
+    && docker-php-ext-install intl pdo calendar pdo_pgsql bcmath xsl soap pdo_mysql gd zip \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pdo pdo_pgsql pgsql \
     && docker-php-ext-configure opcache --enable-opcache \
@@ -21,6 +21,16 @@ RUN apt-get update && \
     zlib1g-dev
 
 
+RUN docker-php-ext-configure intl \
+&& docker-php-ext-install intl
+RUN apt update && apt install -y libc-client-dev libkrb5-dev && rm -r /var/lib/apt/
+
+RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+&& docker-php-ext-install imap
+
+RUN docker-php-ext-configure pgsql \
+&& docker-php-ext-install pgsql
+
 RUN apt-get install -y libzip-dev
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install mysqli pdo pdo_mysql pdo_pgsql
@@ -33,7 +43,7 @@ RUN sed -ie 's/pm.max_children = 5/pm.max_children = 15/' /usr/local/etc/php-fpm
     && sed -ie 's/pm.max_spare_servers = 3/pm.max_spare_servers = 15/' /usr/local/etc/php-fpm.d/www.conf \
     && sed -ie 's/pm.start_servers = 2/pm.start_servers = 10/' /usr/local/etc/php-fpm.d/www.conf
 
-RUN pecl install xdebug \
+RUN pecl install xdebug-3.1.5 \
     && docker-php-ext-enable xdebug
 
 COPY php.ini /usr/local/etc/php/php.ini
