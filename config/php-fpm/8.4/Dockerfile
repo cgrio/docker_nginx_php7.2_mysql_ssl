@@ -46,10 +46,8 @@ RUN apt-get install && docker-php-ext-configure opcache --enable-opcache \
 RUN pecl install imagick \
     && docker-php-ext-enable imagick
 
-RUN apt update && apt install -y libc-client-dev libkrb5-dev && rm -r /var/lib/apt/
+RUN apt update && apt install -y libkrb5-dev && rm -r /var/lib/apt/
 
-RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-&& docker-php-ext-install imap
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
